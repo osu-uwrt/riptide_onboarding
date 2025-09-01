@@ -8,11 +8,11 @@ class TurtleNode(Node): # Define a new class 'TurtleNode' that inherits from the
     def __init__(self): # The constructor method to initialize the node's attributes and setup
         super().__init__('turtle_node')  # Initialize the node with the name 'turtle_node'
         
-        # TODO: Create a publisher that publishes Twist messages to the '/turtle1/cmd_vel' topic
-        # self.publisher_ = ...
+        # Create a publisher that publishes Twist messages to the '/turtle1/cmd_vel' topic
+        self.publisher_ = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
 
-        # TODO: Set up a timer that periodically calls the publish_twist method
-        # self.timer = ...
+        # Set up a timer that periodically calls the publish_twist method
+        self.timer = self.create_timer(1.0, self.publish_twist)
 
         self.get_logger().info("Turtle Node started!")  # Log a message to confirm the node has started
 
@@ -22,8 +22,8 @@ class TurtleNode(Node): # Define a new class 'TurtleNode' that inherits from the
         twist.linear.x = 2.0  # Set linear velocity in the x direction
         twist.angular.z = 1.0  # Set angular velocity around the z-axis (yaw)
 
-        # TODO: Publish the Twist message
-        # self.publisher_.publish(msg)
+        # Publish the Twist message
+        self.publisher_.publish(twist)
 
         self.get_logger().info("Published twist message")  # Log a message after publishing the twist
 

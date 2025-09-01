@@ -8,13 +8,34 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclpy REQUIRED)
+find_package(rclcpp REQUIRED)
 find_package(turtlesim REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(std_srvs REQUIRED)
 
-#install programs
-file(GLOB python_programs RELATIVE ${PROJECT_SOURCE_DIR} src/*.py)
+#install python programs
+file(GLOB python_programs RELATIVE ${PROJECT_SOURCE_DIR} src/py/*.py)
 install(PROGRAMS ${python_programs}
   DESTINATION lib/${PROJECT_NAME})
+
+# Build c++ executables
+add_executable(turtle_node src/cpp/turtle_node.cpp)
+add_executable(turtle_kill_switch src/cpp/turtle_kill_switch.cpp)
+
+set (cpp_deps
+  rclcpp
+  geometry_msgs
+  std_msgs
+  std_srvs
+)
+
+ament_target_dependencies(turtle_node ${cpp_deps})
+ament_target_dependencies(turtle_kill_switch ${cpp_deps})
+
+#Install c++ executables
+install(TARGETS turtle_node turtle_kill_switch
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

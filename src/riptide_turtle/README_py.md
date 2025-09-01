@@ -8,14 +8,14 @@ This tutorial guides you through creating and enhancing a ROS 2 node (`TurtleNod
 
 **Objective:**
 
-Create a ROS 2 node that continuously publishes `Twist` messages to control the turtle in the turtlesim simulation.
+Create a ROS 2 node that continuously publishes `Twist` messages to control the turtle in the *turtlesim* simulation.
 
 **Guided Implementation:**
 
 1. **Create a new Python script (`turtle_node.py`) in your ROS 2 package.**
 
    Below is the skeleton of your `TurtleNode` class, including the `main()` function and the `Twist` message.  
-   - The skeleton is located in `src/turtle_node.py`  
+   - The skeleton is located in `src/py/turtle_node.py`  
    - The topic you will need to publish to is `/turtle1/cmd_vel`  
   
    Your task is to implement the missing functionality:
@@ -200,7 +200,7 @@ Create a separate ROS 2 node that publishes to the `/turtle_enabled` topic, enab
 1. **Create a new Python script (`turtle_kill_switch.py`) in your ROS 2 package:**
 
    Below is the skeleton of your `TurtleEnablePublisher` class.
-   - The skeleton is located in `src/turtle_kill_switch.py`
+   - The skeleton is located in `src/py/turtle_kill_switch.py`
    - The topic you will need to publish to is `/turtle_enabled`
   
    Your task is to implement the missing functionality:
@@ -219,7 +219,7 @@ Create a separate ROS 2 node that publishes to the `/turtle_enabled` topic, enab
            # TODO: Create a publisher that publishes Bool messages to the 'turtle_enabled' topic
            # self.publisher_ = ...
 
-           # TODO: Set up a timer that periodically calls the toggle_state_callback method every 30 seconds
+           # TODO: Set up a timer that periodically calls the toggle_state_callback method every 10 seconds
            # self.state_timer = ...
 
            # TODO: Set up a timer that periodically calls the publish_state_callback method every second
@@ -283,11 +283,11 @@ Create a separate ROS 2 node that publishes to the `/turtle_enabled` topic, enab
    You need to periodically toggle the state and publish it. Here’s how to set up the timers:
 
    ```python
-   self.state_timer = self.create_timer(30.0, self.toggle_state_callback)
+   self.state_timer = self.create_timer(10.0, self.toggle_state_callback)
    self.publish_timer = self.create_timer(1.0, self.publish_state_callback)
    ```
 
-   - `30.0`: The time interval in seconds for toggling the state.
+   - `10.0`: The time interval in seconds for toggling the state.
    - `1.0`: The time interval in seconds for publishing the state.
 
    </details>
@@ -324,8 +324,8 @@ Create a separate ROS 2 node that publishes to the `/turtle_enabled` topic, enab
            # Create a publisher that publishes Bool messages to the 'turtle_enabled' topic
            self.publisher_ = self.create_publisher(Bool, 'turtle_enabled', 10)
 
-           # Set up a timer that periodically calls the toggle_state_callback method every 30 seconds
-           self.state_timer = self.create_timer(30.0, self.toggle_state_callback)
+           # Set up a timer that periodically calls the toggle_state_callback method every 10 seconds
+           self.state_timer = self.create_timer(10.0, self.toggle_state_callback)
 
            # Set up a timer that periodically calls the publish_state_callback method every second
            self.publish_timer = self.create_timer(1.0, self.publish_state_callback)
@@ -389,11 +389,11 @@ Create a separate ROS 2 node that publishes to the `/turtle_enabled` topic, enab
    ros2 topic echo /turtle_enabled
    ```
 
-   You should see alternating `True` and `False` values being published every 30 seconds.
+   You should see alternating `True` and `False` values being published every 10 seconds.
 
 ### Result
 
-The kill switch node alternates the state of the turtle between enabled and disabled every 30 seconds and publishes this state every second.
+The kill switch node alternates the state of the turtle between enabled and disabled every 10 seconds and publishes this state every second.
 
 ---
 
@@ -773,7 +773,7 @@ Add a service that resets the linear and angular speeds to their original values
 
 ### Implementation
 
-- The service you will need to create to is `/reset_speed`
+- The service you will need to create is `/reset_speed`
 - You will need the message type `Trigger` from `std_srvs.srv`
 
 1. **Update the TurtleNode to include a reset speed service:**
