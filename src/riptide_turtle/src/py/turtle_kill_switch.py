@@ -8,14 +8,14 @@ class TurtleEnablePublisher(Node):  # Define a new class 'TurtleEnablePublisher'
     def __init__(self):  # The constructor method to initialize the node's attributes and setup
         super().__init__('turtle_kill_switch_publisher')  # Initialize the node with the name 'turtle_kill_switch_publisher'
         
-        # Create a publisher that publishes Bool messages to the 'turtle_enabled' topic
-        self.publisher_ = self.create_publisher(Bool, 'turtle_enabled', 10)
+        # TODO: Create a publisher that publishes Bool messages to the 'turtle_enabled' topic
+        # self.publisher_ = ...
 
-        # Set up a timer that periodically calls the toggle_state_callback method every 10 seconds
-        self.state_timer = self.create_timer(10.0, self.toggle_state_callback)
+        # TODO: Set up a timer that periodically calls the toggle_state_callback method every 10 seconds
+        # self.state_timer = ...
 
-        # Set up a timer that periodically calls the publish_state_callback method every second
-        self.publish_timer = self.create_timer(1.0, self.publish_state_callback)
+        # TODO: Set up a timer that periodically calls the publish_state_callback method every second
+        # self.publish_timer = ...
 
         self.state = True  # Initialize the state as True (enabled)
         self.get_logger().info("Turtle Enable Publisher started!")  # Log a message to confirm the node has started
@@ -31,8 +31,8 @@ class TurtleEnablePublisher(Node):  # Define a new class 'TurtleEnablePublisher'
         msg = Bool()
         msg.data = self.state
 
-        # Publish the Bool message
-        self.publisher_.publish(msg)
+        # TODO: Publish the Bool message
+        # self.publisher_.publish(msg)
 
         state_str = "Enabled" if self.state else "Disabled"
         self.get_logger().info(f"Published: {state_str}")
