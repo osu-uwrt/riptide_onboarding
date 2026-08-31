@@ -45,7 +45,7 @@ public:
     bool state;
 
     // Define the publisher as a shared pointer and provide its message type
-    rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr publisher; 
+    rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr publisher;
 
     // Define timers as shared pointers
     rclcpp::TimerBase::SharedPtr stateTimer;
