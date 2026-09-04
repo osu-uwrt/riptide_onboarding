@@ -161,7 +161,7 @@ Create a ROS 2 node that continuously publishes `Twist` messages to control the 
 
 3. **Build the Package:**
 
-   Before running the node, ensure you are in the `osu-uwrt/development/software` directory and build the riptide_turtle package:
+   Before running the node, ensure you are in the `osu-uwrt/mercury_dev` directory and build the riptide_turtle package:
 
    ```bash
    colcon build --packages-select riptide_turtle
@@ -367,7 +367,7 @@ Create a separate ROS 2 node that publishes to the `/turtle_enabled` topic, enab
 
 3. **Build the Package:**
 
-   Before running the node, ensure you are in the `osu-uwrt/development/software` directory and rebuild the `riptide_turtle` package:
+   Before running the node, ensure you are in the `osu-uwrt/mercury_dev` directory and rebuild the `riptide_turtle` package:
 
    ```bash
    colcon build --packages-select riptide_turtle
@@ -550,7 +550,7 @@ Modify the `TurtleNode` to listen to the `/turtle_enabled` topic and only publis
 
 3. **Build the Package:**
 
-   Before running the nodes, ensure you are in the `osu-uwrt/development/software` directory and again rebuild the `riptide_turtle` package:
+   Before running the nodes, ensure you are in the `osu-uwrt/mercury_dev` directory and again rebuild the `riptide_turtle` package:
 
    ```bash
    colcon build --packages-select riptide_turtle
@@ -736,7 +736,7 @@ Introduce ROS 2 parameters to dynamically adjust the turtle's linear and angular
 
 2. **Build the Package:**
 
-   Before running the node, ensure you are in the `osu-uwrt/development/software` directory and rebuild the `riptide_turtle` package:
+   Before running the node, ensure you are in the `osu-uwrt/mercury_dev` directory and rebuild the `riptide_turtle` package:
 
    ```bash
    colcon build --packages-select riptide_turtle
@@ -955,7 +955,7 @@ Add a service that resets the linear and angular speeds to their original values
 
 3. **Rebuild the Package:**
 
-    Before running the node, ensure you are in the `osu-uwrt/development/software` directory and rebuild the riptide_turtle package:
+    Before running the node, ensure you are in the `osu-uwrt/mercury_dev` directory and rebuild the riptide_turtle package:
 
     ```bash
     colcon build --packages-select riptide_turtle
